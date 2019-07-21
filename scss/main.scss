@@ -1,6 +1,70 @@
-$primary-color: #444;
+@import "config";
+* {
+  box-sizing: border-box;
+}
 
 body {
+  @include background;
   background: $primary-color;
   color: #fff;
+  height: 100%;
+  margin: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  line-height: 1.5;
+}
+// Headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+  //anpersant used to target lg-heading as it's own class not a 'nested lg-heading' it would be the same as doing h1.lg-heading//
+  &.lg-heading {
+    font-size: 6rem;
+  }
+  &.sm-heading {
+    margin-bottom: 2rem; //rem is a modifier of project global font size if undclaired
+    padding: 0.2rem 1rem;
+    background: rgba (lighten($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  position: fixed; //makes header stickey
+  z-index: 2; //the bigger the # the closer toward you obj is
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  height: 100%;
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+
+      &:hover {
+        color: $secondary-color;
+        @include easeOut();
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+    }
+  }
 }
