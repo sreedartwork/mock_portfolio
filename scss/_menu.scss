@@ -93,7 +93,7 @@
     .portrait {
       width: 250px;
       height: 250px;
-      background: url("../img/COMPUTER.jpg");
+      background: url("../img/COMPUTER_sm.png");
       border-radius: 50%;
       border: solid 3px $secondary-color;
     }
@@ -107,6 +107,7 @@
       transform: translate3d(0, 0, 0);
     }
     &.current > a {
+      // inside the link change to 2nd clr
       color: $secondary-color;
     }
   }
