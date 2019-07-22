@@ -1,6 +1,6 @@
 @import "config";
 @import "menu";
-@import "mobile";
+
 * {
   box-sizing: border-box;
 }
@@ -8,7 +8,8 @@
 body {
   @include background;
   background: $primary-color;
-  color: #fff;
+  color: set-text-color($primary-color);
+  //allows color to adjust 2 light and dark
   height: 100%;
   margin: 0;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -48,8 +49,10 @@ header {
 
 main {
   padding: 4rem;
-  height: 100%;
-
+  // height: 100%;
+  min-height: calc(100vh - 60px);
+  //calc = calulation 100 viewport-height minus the height of footer
+  //STICKY FOOTER
   .icons {
     margin-top: 1rem;
 
@@ -70,3 +73,49 @@ main {
     }
   }
 }
+
+//GRID SET UP
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas: //this is how the grids will stack in the site
+    "bioimage bio bio"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
+  .bio-image {
+    grid-area: bioimage; //same name as above on line 80
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+  }
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+  .job-1 {
+    grid-area: job1;
+  }
+
+  .job-2 {
+    grid-area: job2;
+  }
+
+  .job-3 {
+    grid-area: job3;
+  }
+  .job {
+    background: lighten($primary-color, 10);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+// STICKEY FOOTER LINE 55
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: lighten($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
+}
+
+@import "mobile";
